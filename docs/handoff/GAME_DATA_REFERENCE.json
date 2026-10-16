@@ -1,0 +1,610 @@
+{
+  "meta": {
+    "version": "1.0",
+    "rounds": 5,
+    "budget": 8,
+    "actions": 3,
+    "min_actions": 2,
+    "max_actions": 4
+  },
+  "cards": [
+    {
+      "id": "T1",
+      "name": "Foundational EdTech & AI Professional Development",
+      "category": "Teacher Professional Capacity",
+      "cost": 2,
+      "sensing": 0,
+      "modelling": 2,
+      "acting": 1,
+      "supporters": [
+        "L1",
+        "L2",
+        "L4"
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "Data & Assessment Literacy",
+      "category": "Teacher Professional Capacity",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 3,
+      "acting": 0,
+      "supporters": [
+        "T1",
+        "P3",
+        "I3"
+      ]
+    },
+    {
+      "id": "T3",
+      "name": "AI-Enhanced Lesson Design Expertise",
+      "category": "Teacher Professional Capacity",
+      "cost": 3,
+      "sensing": 0,
+      "modelling": 3,
+      "acting": 2,
+      "supporters": [
+        "T1",
+        "T4",
+        "P1"
+      ]
+    },
+    {
+      "id": "T4",
+      "name": "Professional Learning Communities (PLCs)",
+      "category": "Teacher Professional Capacity",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 2,
+      "supporters": [
+        "L2",
+        "L3",
+        "I2"
+      ]
+    },
+    {
+      "id": "S1",
+      "name": "Digital Literacy Foundations (Find, Think, Apply, Create)",
+      "category": "Student Digital & AI Agency",
+      "cost": 2,
+      "sensing": 1,
+      "modelling": 1,
+      "acting": 1,
+      "supporters": [
+        "I1",
+        "T1",
+        "G2"
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "AI Literacy & Critical Evaluation",
+      "category": "Student Digital & AI Agency",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 1,
+      "supporters": [
+        "S1",
+        "T1",
+        "G1"
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "Self-Directed Learning & Metacognition",
+      "category": "Student Digital & AI Agency",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 2,
+      "supporters": [
+        "S1",
+        "P3",
+        "S2"
+      ]
+    },
+    {
+      "id": "S4",
+      "name": "AI-Assisted Creation & Collaboration",
+      "category": "Student Digital & AI Agency",
+      "cost": 3,
+      "sensing": 0,
+      "modelling": 2,
+      "acting": 3,
+      "supporters": [
+        "S2",
+        "P4",
+        "I1"
+      ]
+    },
+    {
+      "id": "P1",
+      "name": "Active & Collaborative e-Pedagogy",
+      "category": "Pedagogy & Assessment",
+      "cost": 2,
+      "sensing": 0,
+      "modelling": 1,
+      "acting": 2,
+      "supporters": [
+        "T1",
+        "T4",
+        "I2"
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "Differentiated & Personalised Learning",
+      "category": "Pedagogy & Assessment",
+      "cost": 4,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 3,
+      "supporters": [
+        "T2",
+        "I3",
+        "T3"
+      ]
+    },
+    {
+      "id": "P3",
+      "name": "Technology-Enhanced Formative Assessment",
+      "category": "Pedagogy & Assessment",
+      "cost": 3,
+      "sensing": 2,
+      "modelling": 1,
+      "acting": 2,
+      "supporters": [
+        "T2",
+        "I2",
+        "T4"
+      ]
+    },
+    {
+      "id": "P4",
+      "name": "Authentic Learning & 21CC Development",
+      "category": "Pedagogy & Assessment",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 3,
+      "supporters": [
+        "P1",
+        "S4",
+        "G4"
+      ]
+    },
+    {
+      "id": "I1",
+      "name": "Connected Devices & Learning Spaces",
+      "category": "Technology & Data Infrastructure",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 0,
+      "acting": 2,
+      "supporters": [
+        "L1",
+        "L4",
+        "G2"
+      ]
+    },
+    {
+      "id": "I2",
+      "name": "Integrated Digital Learning Platform (SLS-centred)",
+      "category": "Technology & Data Infrastructure",
+      "cost": 3,
+      "sensing": 2,
+      "modelling": 0,
+      "acting": 1,
+      "supporters": [
+        "T1",
+        "P1",
+        "L4"
+      ]
+    },
+    {
+      "id": "I3",
+      "name": "Learning Analytics & Student Insights",
+      "category": "Technology & Data Infrastructure",
+      "cost": 4,
+      "sensing": 3,
+      "modelling": 2,
+      "acting": 0,
+      "supporters": [
+        "T2",
+        "P3",
+        "G1"
+      ]
+    },
+    {
+      "id": "I4",
+      "name": "AI-Powered Learning & Feedback Tools",
+      "category": "Technology & Data Infrastructure",
+      "cost": 5,
+      "sensing": 1,
+      "modelling": 3,
+      "acting": 3,
+      "supporters": [
+        "T3",
+        "S3",
+        "S2"
+      ]
+    },
+    {
+      "id": "L1",
+      "name": "Shared EdTech Vision & Strategic Roadmap",
+      "category": "School Leadership & Culture",
+      "cost": 2,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 1,
+      "supporters": [
+        "G3",
+        "L2",
+        "G4"
+      ]
+    },
+    {
+      "id": "L2",
+      "name": "Distributed Leadership & Teacher Champions",
+      "category": "School Leadership & Culture",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 2,
+      "supporters": [
+        "L1",
+        "T4",
+        "L4"
+      ]
+    },
+    {
+      "id": "L3",
+      "name": "Innovation & Experimentation Culture",
+      "category": "School Leadership & Culture",
+      "cost": 3,
+      "sensing": 2,
+      "modelling": 2,
+      "acting": 1,
+      "supporters": [
+        "L2",
+        "T4",
+        "G4"
+      ]
+    },
+    {
+      "id": "L4",
+      "name": "Implementation Capacity & Change Management",
+      "category": "School Leadership & Culture",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 1,
+      "acting": 3,
+      "supporters": [
+        "L1",
+        "L2",
+        "G3"
+      ]
+    },
+    {
+      "id": "G1",
+      "name": "AI Ethics, Privacy & Data Governance",
+      "category": "Trust, Governance & Partnerships",
+      "cost": 3,
+      "sensing": 2,
+      "modelling": 2,
+      "acting": 0,
+      "supporters": [
+        "L1",
+        "T1",
+        "G4"
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "Cyber Wellness & Digital Inclusion",
+      "category": "Trust, Governance & Partnerships",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 1,
+      "acting": 2,
+      "supporters": [
+        "G1",
+        "S1",
+        "G3"
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "Parent & Community Engagement",
+      "category": "Trust, Governance & Partnerships",
+      "cost": 2,
+      "sensing": 2,
+      "modelling": 0,
+      "acting": 1,
+      "supporters": [
+        "L1",
+        "G2",
+        "L2"
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "External Partnerships & Innovation Networks",
+      "category": "Trust, Governance & Partnerships",
+      "cost": 3,
+      "sensing": 1,
+      "modelling": 2,
+      "acting": 2,
+      "supporters": [
+        "L1",
+        "L3",
+        "G1"
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Technology-Ready",
+      "starting_cards": [
+        "I1",
+        "I2"
+      ]
+    },
+    {
+      "name": "Collaborative Teaching",
+      "starting_cards": [
+        "T1",
+        "T4"
+      ]
+    },
+    {
+      "name": "Student-Centred",
+      "starting_cards": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "name": "Strategically Led",
+      "starting_cards": [
+        "L1",
+        "L4"
+      ]
+    }
+  ],
+  "engines": [
+    {
+      "id": "Adaptive Teaching",
+      "name": "Adaptive Teaching Intelligence",
+      "requirements": [
+        "T2",
+        "P3",
+        "I3"
+      ],
+      "reward": "+1 permanent Modelling per active year; +2 annual Transformation Score while active."
+    },
+    {
+      "id": "Self-Directed AI",
+      "name": "Self-Directed AI Learners",
+      "requirements": [
+        "S2",
+        "S3",
+        "I4"
+      ],
+      "reward": "+1 permanent Acting and +2 cumulative Student Agency per active year."
+    },
+    {
+      "id": "Collective Teacher",
+      "name": "Collective Teacher Intelligence",
+      "requirements": [
+        "T3",
+        "T4",
+        "L2"
+      ],
+      "reward": "+1 permanent Modelling; +10 pp persistent adoption boost to the lowest-adoption owned Teacher or Pedagogy card per active year (individual boost capped at +60 pp)."
+    },
+    {
+      "id": "School Innovation",
+      "name": "School Innovation Engine",
+      "requirements": [
+        "L1",
+        "L3",
+        "L4"
+      ],
+      "reward": "+2 budget at start of the following year while engine is active at that year’s opening evaluation."
+    },
+    {
+      "id": "Trusted AI",
+      "name": "Trusted AI Ecosystem",
+      "requirements": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "reward": "+2 cumulative Stakeholder Trust per active year; NO additional general 50% AI-risk mitigation in v1.0."
+    },
+    {
+      "id": "Networked Learning",
+      "name": "Networked Learning Ecosystem",
+      "requirements": [
+        "G4",
+        "P4",
+        "S4"
+      ],
+      "reward": "+1 permanent Sensing per active year; NO additional event choice in v1.0."
+    }
+  ],
+  "events": [
+    {
+      "id": "E01",
+      "name": "MOE Expands AI-Enabled Tools",
+      "type": "Opportunity",
+      "description": "New centrally provided AI education features, including tools in SLS, reduce implementation costs.",
+      "next_year_effect": "I4, I3, P3: −2 each; if I2 owned, +1 investment action."
+    },
+    {
+      "id": "E02",
+      "name": "National Teacher AI Upskilling Initiative",
+      "type": "Opportunity",
+      "description": "Hypothetical national training and implementation support.",
+      "next_year_effect": "T1, T2, T3: −2 each; if L2 owned, +1 investment action."
+    },
+    {
+      "id": "E03",
+      "name": "Updated AI Literacy Curriculum",
+      "type": "Mixed",
+      "description": "MOE strengthens student AI literacy and responsible AI expectations.",
+      "next_year_effect": "S1, S2, G2: −1 each; if S2 absent, Student Agency event adjustment −2."
+    },
+    {
+      "id": "E04",
+      "name": "New Responsible AI Guidelines",
+      "type": "Mixed",
+      "description": "New governance expectations increase the importance of safe adoption.",
+      "next_year_effect": "G1: −2; if G1 absent, I3 and I4 adoption −20 pp."
+    },
+    {
+      "id": "E05",
+      "name": "National Digital Learning Infrastructure Refresh",
+      "type": "Opportunity",
+      "description": "Hypothetical device/connectivity refresh.",
+      "next_year_effect": "I1, I2: −2 each; next-year budget +1 (rebalanced from +2)."
+    },
+    {
+      "id": "E06",
+      "name": "MOE Requests an EdTech Implementation Review",
+      "type": "Mixed",
+      "description": "School must document implementation progress and learning outcomes.",
+      "next_year_effect": "−1 action; if BOTH L1 and I3 owned, restore 1 action and add +1 budget (rebalanced from +2)."
+    },
+    {
+      "id": "E07",
+      "name": "MOE Inclusion and Well-Being Priority",
+      "type": "Mixed",
+      "description": "Heightened emphasis on inclusion, well-being and digital development.",
+      "next_year_effect": "G2, S3, P2: −1 each; if G2 absent, S1–S4 adoption −10 pp."
+    },
+    {
+      "id": "E08",
+      "name": "GovTech Secure AI Services Expansion",
+      "type": "Opportunity",
+      "description": "Hypothetical school-relevant expansion of secure government AI services; not a claim of current school availability.",
+      "next_year_effect": "I4, G1: −2 each; if G1 owned, +1 action."
+    },
+    {
+      "id": "E09",
+      "name": "Breakthrough in Agentic AI",
+      "type": "Mixed",
+      "description": "Rapid improvement in multi-step AI agents creates both possibilities and oversight challenges.",
+      "next_year_effect": "I4, S4: −2 each; if EITHER G1 or T3 absent, I4 adoption −20 pp."
+    },
+    {
+      "id": "E10",
+      "name": "AI Computing Costs Collapse",
+      "type": "Opportunity",
+      "description": "Cheaper computing and accessible models reduce implementation costs.",
+      "next_year_effect": "I3, I4, S4: −2 each."
+    },
+    {
+      "id": "E11",
+      "name": "Major Technology Platform Overhaul",
+      "type": "Risk",
+      "description": "Major system upgrade causes retraining and workflow disruption.",
+      "next_year_effect": "I2, I3, I4 adoption −20 pp; −10 pp instead if L4 owned."
+    },
+    {
+      "id": "E12",
+      "name": "AI Dangers Controversy",
+      "type": "Risk",
+      "description": "Public concern over inaccurate outputs and relational/affective risks of relational AI, including emotional dependency, attachment, manipulation and displacement of human relationships.",
+      "next_year_effect": "I4, S4 adoption −30 pp; −10 pp instead if BOTH G1 and S2 owned."
+    },
+    {
+      "id": "E13",
+      "name": "Breakthrough in Learning Analytics",
+      "type": "Opportunity",
+      "description": "New analytical capabilities improve diagnosis of learning needs.",
+      "next_year_effect": "I3, T2: −2 each; if BOTH I3 and T2 owned, +2 event Learning Impact."
+    },
+    {
+      "id": "E14",
+      "name": "Major Cybersecurity Vulnerability",
+      "type": "Risk",
+      "description": "A vulnerability affects digital education services.",
+      "next_year_effect": "I2, I3, I4 adoption −20 pp; −10 pp if G1; 0 pp if BOTH G1 and L4."
+    },
+    {
+      "id": "E15",
+      "name": "Teacher Workload Crisis",
+      "type": "Risk",
+      "description": "Heavy workloads constrain teacher capacity to implement change.",
+      "next_year_effect": "−1 action unless L4 owned; T3, P2, P3 adoption −20 pp regardless."
+    },
+    {
+      "id": "E16",
+      "name": "Parent Backlash Against AI",
+      "type": "Risk",
+      "description": "Parents worry about AI replacing thinking and meaningful human interaction.",
+      "next_year_effect": "S4, I4 adoption −20 pp; −10 pp if G3; 0 pp if BOTH G3 and G1."
+    },
+    {
+      "id": "E17",
+      "name": "Change of School Leadership & Departure of Teacher Champions",
+      "type": "Risk",
+      "description": "Leadership turnover and movement of influential teachers disrupt momentum, direction and shared practice.",
+      "next_year_effect": "T4, L2 adoption −20 pp; −10 pp instead if BOTH T4 and L2 owned."
+    },
+    {
+      "id": "E18",
+      "name": "Tightening School Budget",
+      "type": "Risk",
+      "description": "Competing priorities constrain discretionary EdTech funding.",
+      "next_year_effect": "Budget −2; budget −1 instead if L1 owned (rebalanced from −3)."
+    },
+    {
+      "id": "E19",
+      "name": "Digital Learning Service Disruption",
+      "type": "Risk",
+      "description": "A prolonged service disruption exposes dependencies.",
+      "next_year_effect": "I2, I4 adoption −30 pp; −10 pp instead if BOTH L4 and P1 owned."
+    },
+    {
+      "id": "E20",
+      "name": "Widening Student Digital Divide",
+      "type": "Mixed",
+      "description": "Evidence reveals unequal student access and digital confidence.",
+      "next_year_effect": "If G2 absent, Student Agency event adjustment −3; I1 and G2: −2 each."
+    },
+    {
+      "id": "E21",
+      "name": "HQ-School Research Collaboration",
+      "type": "Opportunity",
+      "description": "MOE Headquarters–school research collaboration may include Rapid Research, design-based research, implementation studies or longer-term work.",
+      "next_year_effect": "T2, P3, L3: −1 each; if L3 owned, +1 action; if BOTH T2 and P3 owned, +2 event Learning Impact."
+    },
+    {
+      "id": "E22",
+      "name": "Cluster-Wide Professional Learning Network",
+      "type": "Opportunity",
+      "description": "Neighbouring schools organise exchanges and implementation workshops.",
+      "next_year_effect": "T4, L2: −2 each; if G4 owned, +1 action."
+    },
+    {
+      "id": "E23",
+      "name": "University–School AI Research Partnership",
+      "type": "Opportunity",
+      "description": "Local research collaboration supports evaluation of AI pedagogy.",
+      "next_year_effect": "G4, P4, I3: −1 each; if BOTH G4 and L3 owned, +2 budget (rebalanced from +3)."
+    },
+    {
+      "id": "E24",
+      "name": "School Innovation Challenge",
+      "type": "Opportunity",
+      "description": "An innovation challenge encourages piloting and evaluation of new learning approaches.",
+      "next_year_effect": "L3, S4, P4: −2 each; if L3 owned, +1 action."
+    }
+  ]
+}
