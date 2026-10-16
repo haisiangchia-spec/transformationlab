@@ -53,7 +53,7 @@ Independent agency/trust gauges are not fabricated: only approved engine gains
 are labelled and shown. S/M/A is raw, with no percentage denominator or visual cap.
 
 `vite.config.ts` builds the website with relative asset paths; `vite.engine.config.ts`
-retains the standalone engine build. Pages deployment is not configured here.
+retains the standalone engine build. The explicit Pages deployment workflow is described in README.md.
 
 ## Annual lifecycle
 

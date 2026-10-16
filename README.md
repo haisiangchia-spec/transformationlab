@@ -94,18 +94,30 @@ independent full gauge scales remain undefined. No verbal score bands, win/loss
 thresholds, normalised chart values or confidence percentages are invented.
 ## GitHub Pages
 
-The built site is published on the `gh-pages` branch. To enable browser access,
-open the repository's **Settings → Pages**, set **Source** to **Deploy from a branch**,
-select **gh-pages** and **/ (root)**, then **Save**. GitHub supplies the deployment
-status and final site URL there. The expected project URL is:
+The preferred deployment is `.github/workflows/deploy-pages.yml`, using GitHub's
+Pages artifact/deployment actions. It installs the lockfile, runs unit tests and
+type checking, builds `dist/`, and deploys that exact artifact with Pages-specific
+permissions. The source and built artifact are part of the same visible workflow.
+
+One-time activation:
+
+1. In repository **Settings → Pages**, set **Source** to **GitHub Actions**.
+2. In **Actions → Deploy game to GitHub Pages**, select **Run workflow**, choose
+   `main`, then **Run workflow**. Wait for both Build and Deploy to succeed.
+
+Normal pushes to `main` also trigger the workflow. Some automation credentials
+suppress push-triggered Actions/Pages builds; if a source update has no workflow
+run, use **Run workflow** manually. A successful Git push alone does not prove
+that the website was updated. Check the deployment's commit and completion status.
+The expected project URL is:
 
 https://haisiangchia-spec.github.io/transformationlab/
 
-To publish future changes, run `npm ci` followed by `npm run deploy:pages` with Git
-push access. The script builds the app, publishes only generated files and
-`.nojekyll`, keeps existing Pages branch history, and never force-pushes or changes
-the source checkout. An unchanged build creates no deployment commit. There is no
-automatic deployment workflow yet.
+The legacy `npm run deploy:pages` command only publishes generated files to the
+`gh-pages` branch. It does not call the Pages deployment API or guarantee that a
+Pages build was triggered. It remains available for branch-based configurations,
+but should not be used as evidence of a completed live deployment. The explicit
+Actions workflow does not require `gh-pages` and does not alter that branch.
 
 See [architecture and rule decisions](docs/ARCHITECTURE.md),
 [authoritative specification](docs/handoff/GAME_DESIGN.md), and
