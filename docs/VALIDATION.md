@@ -1,8 +1,8 @@
-# Engine validation
+# Validation — milestones 1 and 2
 
 Run `npm ci`, `npm test`, and `npm run build` from the repository root.
-The build includes strict TypeScript checking and produces an ES module library,
-not a playable UI.
+The default build includes strict TypeScript checking and produces the playable
+React site. `npm run build:engine` produces the separate ES module library.
 
 - `data.test.ts`: all supplied fields preserved, unique IDs/references, exact costs,
   S/M/A and supporters crosschecked with the supplied simulator.
@@ -33,5 +33,32 @@ engine tests verify seeded event selection, no replacement, random profiles and
 replay. Seeds reproduce this engine's runs, not the original simulator's heuristic
 policies or reported 5,000-game balance aggregate.
 
-No browser/UI tests have run: no visual implementation exists at this milestone.
-The mandatory future UI/classifier/chart checks in the handoff remain deferred.
+## Milestone 2 browser and save validation
+
+`tests/session.test.ts` checks versioned command-log roundtrips, five-year replay,
+malformed saves, invalid IDs/actions and atomic failure without mutation.
+
+`tests/browser/game.spec.ts` runs in Chromium at desktop (1600×1000), tablet
+(834×1112, touch) and mobile (390×844, touch) sizes. It covers profile selection,
+help/escape/focus restoration, local fonts, horizontal layout bounds, category
+filters and locked S3 details, reversible plans, unchanged header resources until
+confirmation, cancelled review, committed actions and next-year engine resources,
+full five-year journeys with purchases and engine-matching final scores, unique
+four-event handling, dynamic fourth action slot, keyboard confirmation, reload/
+resume and corrupt-save recovery. Tests use real browser localStorage and the same
+engine as the app. Responsive screenshots were also inspected manually.
+
+Run `npm run test:e2e` after `npx playwright install chromium`, or supply the
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` environment variable for an existing Chromium.
+The suite starts a Vite development server on port 4173. The current cloud machine
+uses `/usr/bin/chromium`. Browser binaries and runtime processes are not committed.
+
+Full reporting, classifier/confidence, chart and export checks remain deferred to
+their implementation milestones. No cross-browser Safari/Firefox validation or
+GitHub Pages deployment is claimed.
+
+Milestone 2 results: 161 unit/reference tests and 21 Chromium browser tests passed.
+Both website and standalone engine builds passed. A production-build smoke test
+under `/transformationlab/` verified relative assets, local fonts, investment
+confirmation, year-end scoring and the next-year event without request or runtime
+errors. This local subdirectory test is not a published GitHub Pages deployment.

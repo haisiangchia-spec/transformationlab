@@ -1,4 +1,4 @@
-# Milestone 1 architecture and decisions
+# Architecture and decisions — milestones 1 and 2
 
 ## Boundaries
 
@@ -14,12 +14,43 @@
 - `random.ts`: explicit uint32 Mulberry32 state; seeded profile/event selection.
 - `rounds.ts`: five-year transition boundary and report history. No React, DOM,
   network, timers, ambient randomness or storage dependencies.
-- `src/engine/index.ts`: public exports; Vite library entry for this milestone.
+- `src/engine/index.ts`: public exports and independent engine library entry.
 
-React and TypeScript dependencies are prepared. Visual components, font loading,
-responsive layout, browser persistence and deployment are intentionally deferred.
-The later UI must use Oxanium headings/numerals and Inter body text, with the three
-supplied images as visual references only. Raw engine values drive all future charts.
+## React interface (milestone 2)
+
+- `src/ui/App.tsx`: start/game navigation, persisted session, help/menu dialogs,
+  year-end event reveals and a basic completion summary. Full reporting is deferred.
+- `Start.tsx`: four accessible profile radios, random profile selection, optional
+  reproducible seed, game overview and resume/new-game replacement flow.
+- `Gameplay.tsx`: scrollable 24-card catalogue, category/search/availability filters,
+  adoption details, undoable plan, review/confirm, live capability previews, six
+  engine requirements/rewards and the current opening-frozen event.
+- `shared.tsx`: native modal dialogs with focus restoration, decorative symbols,
+  artwork viewports, exact catalogue lookups and numeric formatting.
+- `session.ts`: versioned profile/seed/action-log saves; validate commands and replay
+  through the engine. The UI never supplies its own adoption, engine, cost or score
+  formula. Invalid imports and commands are rejected. No raw saved state is trusted.
+- `styles.css`: responsive desktop/tablet/mobile layouts and reduced-motion support.
+- `src/main.tsx` / `index.html`: actual browser entry. Fontsource packages provide
+  Oxanium headings/numerals and Inter body text without third-party font requests.
+
+Plan previews call `previewPlan`; confirmed resources remain untouched until the
+review dialog is accepted. Acceptance appends `confirmPlan` and `endRound` together,
+replays and saves atomically, then reveals the completed-year result and next event.
+UI previews show capability values before year-end rewards and never award them.
+The 2–4 planning slots are derived from the engine's action limit. Seed generation
+uses browser cryptographic randomness only at game creation; subsequent randomness
+remains explicit engine PRNG state. Unconfirmed plans are local UI state and clear
+on leaving gameplay/reloading. Confirmed years persist through browser localStorage.
+
+Campus/profile art is shown through isolated SVG viewports into the supplied
+reference; no screenshot UI text or numbers are used. Card illustrations use
+category symbols. All displayed game content and values come from engine data.
+Independent agency/trust gauges are not fabricated: only approved engine gains
+are labelled and shown. S/M/A is raw, with no percentage denominator or visual cap.
+
+`vite.config.ts` builds the website with relative asset paths; `vite.engine.config.ts`
+retains the standalone engine build. Pages deployment is not configured here.
 
 ## Annual lifecycle
 

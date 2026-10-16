@@ -7,8 +7,25 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "build": "npm run typecheck && vite build"
+    "build": "npm run typecheck && vite build",
+    "dev": "vite --host 0.0.0.0",
+    "preview": "vite preview --host 0.0.0.0",
+    "build:engine": "tsc --noEmit && vite build --config vite.engine.config.ts",
+    "test:e2e": "playwright test"
   },
-  "dependencies": {"react": "^19.2.0", "react-dom": "^19.2.0"},
-  "devDependencies": {"typescript": "^5.9.3", "vite": "^7.1.0", "vitest": "^3.2.4", "@types/react": "^19.2.0", "@types/react-dom": "^19.2.0"}
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/oxanium": "^5.3.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.0",
+    "vitest": "^3.2.4"
+  }
 }
