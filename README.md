@@ -45,12 +45,14 @@ covers desktop, tablet and mobile viewports.
 
 ## Playing
 
-1. Select a school profile, then **New Game**, or randomise the profile first.
+1. Select a school profile, then **New Game**, or choose the random profile option beside the profile introduction.
    An optional seed makes the profile/event sequence reproducible.
 2. Browse all 24 enablers; filter by category, ownership or affordability, or search.
    Select a card's title for full adoption and engine details.
 3. Add/remove enablers to build a plan. The School Status panel previews raw
-   capabilities before year-end rewards; header resources remain unspent.
+   capabilities before year-end rewards; header totals decrease as cards enter
+   your plan and recover when cards are removed. Purchases commit on confirmation.
+   Category, availability and search filters stay selected between years.
 4. **Confirm Investments** opens a review. Keep planning or confirm to purchase
    atomically and end the year. An empty plan can also end the year.
 5. Review the scored year and next event, then begin the next year. After Year 5,

@@ -93,7 +93,7 @@ export function Gameplay({
           <span>
             BUDGET
             <strong data-testid="budget">
-              {game.budget} <small>/ {game.openingBudget}</small>
+              {projected.budget} <small>/ {game.openingBudget}</small>
             </strong>
           </span>
         </div>
@@ -102,7 +102,7 @@ export function Gameplay({
           <span>
             REMAINING INVESTMENTS
             <strong data-testid="actions">
-              {game.actions} <small>/ {game.actionLimit}</small>
+              {projected.actions} <small>/ {game.actionLimit}</small>
             </strong>
           </span>
         </div>
@@ -361,7 +361,8 @@ export function Gameplay({
               )}
             </div>
             <p className="plan-hint">
-              Plan freely. Budget and actions are spent only when you confirm.
+              Header totals include your plan. Purchases are committed only when
+              you confirm.
             </p>
             <div className="plan-row">
               <div

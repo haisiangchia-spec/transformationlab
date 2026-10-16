@@ -96,21 +96,6 @@ export function Start({
                   HOW TO PLAY<small>LEARN THE GAME</small>
                 </span>
               </button>
-              <button
-                className={`button ${selected === "random" ? "selected" : ""}`}
-                onClick={() => setSelected("random")}
-                aria-pressed={selected === "random"}
-              >
-                <Icon name="shuffle" />
-                <span>
-                  RANDOMISE PROFILE
-                  <small>
-                    {selected === "random"
-                      ? "RANDOM PROFILE SELECTED"
-                      : "LET FATE DECIDE"}
-                  </small>
-                </span>
-              </button>
             </div>
           </div>
         </section>
@@ -131,9 +116,25 @@ export function Start({
               <h2 id="profiles-title">CHOOSE YOUR STARTING SCHOOL</h2>
               <span className="heading-line" />
             </div>
-            <p className="section-intro">
-              Different strengths. Different pathways. One shared goal.
-            </p>
+            <div className="profile-introduction">
+              <p className="section-intro">
+                Different strengths. Different pathways. One shared goal.
+              </p>
+              <button
+                className="random-profile-option"
+                onClick={() =>
+                  setSelected(
+                    selected === "random" ? "Technology-Ready" : "random",
+                  )
+                }
+                aria-pressed={selected === "random"}
+              >
+                <Icon name="shuffle" />
+                {selected === "random"
+                  ? "Random profile selected"
+                  : "Choose a random profile"}
+              </button>
+            </div>
             <div
               className="profile-grid"
               role="radiogroup"

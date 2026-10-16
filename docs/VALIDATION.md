@@ -41,7 +41,7 @@ malformed saves, invalid IDs/actions and atomic failure without mutation.
 `tests/browser/game.spec.ts` runs in Chromium at desktop (1600×1000), tablet
 (834×1112, touch) and mobile (390×844, touch) sizes. It covers profile selection,
 help/escape/focus restoration, local fonts, horizontal layout bounds, category
-filters and locked S3 details, reversible plans, unchanged header resources until
+filters and locked S3 details, reversible plans, live header resource previews with no engine commitment until
 confirmation, cancelled review, committed actions and next-year engine resources,
 full five-year journeys with purchases and engine-matching final scores, unique
 four-event handling, dynamic fourth action slot, keyboard confirmation, reload/
@@ -95,3 +95,9 @@ library build passed. A production report was exercised under `/transformationla
 with no failed requests or runtime errors; desktop/tablet screenshots and a rendered
 A4 PDF were inspected. PDF text includes the rubric version, all engine descriptions
 and final inventory. No actual Pages publication is implied by this local test.
+
+UI refinements: browser checks cover header deductions/restoration, uncommitted
+saves during planning, category/availability/search persistence between years,
+and random profile selection above the cards instead of in the hero actions.
+Current refinement validation: all 192 unit/reference tests and 39 Chromium
+browser checks passed. The production build also passed.

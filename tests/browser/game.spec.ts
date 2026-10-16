@@ -67,11 +67,13 @@ test("planning is reversible, filters work, details show locked supporters; spen
   await page
     .getByRole("button", { name: "Add T1 to plan", exact: true })
     .click();
-  await expect(page.getByTestId("budget")).toHaveText("8 / 8");
-  await expect(page.getByTestId("actions")).toHaveText("3 / 3");
+  await expect(page.getByTestId("budget")).toHaveText("6 / 8");
+  await expect(page.getByTestId("actions")).toHaveText("2 / 3");
   await page
     .getByRole("button", { name: "Remove T1 from investment slot" })
     .click();
+  await expect(page.getByTestId("budget")).toHaveText("8 / 8");
+  await expect(page.getByTestId("actions")).toHaveText("3 / 3");
   await page.getByRole("button", { name: "Student (S)", exact: true }).click();
   await expect(page.getByTestId(/^card-/)).toHaveCount(4);
   await page.getByRole("button", { name: /View details for S3:/ }).click();
@@ -91,7 +93,13 @@ test("planning is reversible, filters work, details show locked supporters; spen
   await page
     .getByRole("button", { name: "KEEP PLANNING", exact: true })
     .click();
-  await expect(page.getByTestId("budget")).toHaveText("8 / 8");
+  await expect(page.getByTestId("budget")).toHaveText("4 / 8");
+  await expect(page.getByTestId("actions")).toHaveText("1 / 3");
+  const uncommitted = await page.evaluate(
+    (key) => JSON.parse(localStorage.getItem(key)!),
+    SAVE_KEY,
+  );
+  expect(uncommitted.actions).toEqual([]);
   await advance(page, 1);
   const saved = await page.evaluate(
     (key) => JSON.parse(localStorage.getItem(key)!),
@@ -223,6 +231,62 @@ test("corrupt saved data shows notice and permits starting fresh", async ({
   await expect(page.getByRole("button", { name: /RESUME GAME/ })).toHaveCount(
     0,
   );
+  await page.getByRole("button", { name: /NEW GAME/ }).click();
+  await expect(
+    page.getByRole("heading", { name: "AVAILABLE ENABLERS" }),
+  ).toBeVisible();
+});
+
+test("catalogue category, availability and search persist into the next year", async ({
+  page,
+}) => {
+  await start(page);
+  await page.getByRole("button", { name: "Teacher (T)", exact: true }).click();
+  await page
+    .getByRole("combobox", { name: "Card availability" })
+    .selectOption("available");
+  await page.getByRole("searchbox", { name: "Search enablers" }).fill("AI");
+  await page
+    .getByRole("button", { name: "Add T1 to plan", exact: true })
+    .click();
+  await advance(page, 1);
+  await expect(
+    page.getByRole("button", { name: "Teacher (T)", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await expect(
+    page.getByRole("combobox", { name: "Card availability" }),
+  ).toHaveValue("available");
+  await expect(
+    page.getByRole("searchbox", { name: "Search enablers" }),
+  ).toHaveValue("AI");
+  await expect(page.getByTestId("card-T1")).toHaveCount(0);
+  await expect(page.getByTestId("card-T3")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Remove T1 from investment slot" }),
+  ).toHaveCount(0);
+});
+test("random profile option sits above cards and can be replaced by a specific profile", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".hero-actions button")).toHaveCount(2);
+  const option = page.getByRole("button", {
+    name: "Choose a random profile",
+    exact: true,
+  });
+  await expect(page.locator(".profile-introduction")).toContainText(
+    "Different strengths.",
+  );
+  await option.click();
+  await expect(
+    page.getByRole("button", { name: "Random profile selected", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("radio", { checked: true })).toHaveCount(0);
+  await page.getByRole("radio", { name: /Student-Centred/ }).check();
+  await expect(
+    page.getByRole("button", { name: "Choose a random profile", exact: true }),
+  ).toHaveAttribute("aria-pressed", "false");
+  await option.click();
   await page.getByRole("button", { name: /NEW GAME/ }).click();
   await expect(
     page.getByRole("heading", { name: "AVAILABLE ENABLERS" }),

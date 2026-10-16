@@ -103,7 +103,7 @@ export function App() {
         />
       ) : game?.phase === "investing" ? (
         <Gameplay
-          key={`${session?.seed}-${game.round}`}
+          key={session?.seed}
           game={game}
           onFinish={finish}
           onMenu={() => setMenu(true)}

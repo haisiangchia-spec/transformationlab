@@ -3343,3 +3343,40 @@ input::placeholder {
     color: #16384c !important;
   }
 }
+
+.profile-introduction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  flex-wrap: wrap;
+  margin-bottom: 17px;
+}
+.profile-introduction .section-intro {
+  margin: 0;
+}
+.random-profile-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #8ce6f5;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-size: 0.75rem;
+  min-height: 40px;
+}
+.random-profile-option .icon {
+  width: 18px;
+  height: 18px;
+}
+.random-profile-option:hover {
+  background: #12384a;
+  border-color: #36728a;
+}
+.random-profile-option[aria-pressed="true"] {
+  background: #104052;
+  border-color: #43d2e8;
+  color: #d3faff;
+}

@@ -34,13 +34,16 @@
 - `src/main.tsx` / `index.html`: actual browser entry. Fontsource packages provide
   Oxanium headings/numerals and Inter body text without third-party font requests.
 
-Plan previews call `previewPlan`; confirmed resources remain untouched until the
-review dialog is accepted. Acceptance appends `confirmPlan` and `endRound` together,
+Plan previews call `previewPlan`; header resources show the remainder after the
+current plan and recover when selections are removed. Engine-owned resources stay
+uncommitted until the review dialog is accepted. Acceptance appends `confirmPlan` and `endRound` together,
 replays and saves atomically, then reveals the completed-year result and next event.
 UI previews show capability values before year-end rewards and never award them.
 The 2–4 planning slots are derived from the engine's action limit. Seed generation
 uses browser cryptographic randomness only at game creation; subsequent randomness
-remains explicit engine PRNG state. Unconfirmed plans are local UI state and clear
+remains explicit engine PRNG state. Catalogue category, availability and search state stay mounted across rounds;
+round transitions clear the confirmed plan without resetting these controls.
+Unconfirmed plans are local UI state and clear
 on leaving gameplay/reloading. Confirmed years persist through browser localStorage.
 
 Campus/profile art is shown through isolated SVG viewports into the supplied
