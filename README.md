@@ -26,8 +26,8 @@ npm run build
 
 `npm run build` checks TypeScript and builds the playable site into `dist/`.
 `npm run preview` serves that production build. Vite uses relative asset paths so
-it can be served beneath a GitHub Pages repository path. GitHub Pages publication
-has not been configured or performed by this milestone.
+it can be served beneath a GitHub Pages repository path. The generated site can be published to the `gh-pages` branch with
+`npm run deploy:pages`.
 
 For browser tests:
 
@@ -90,7 +90,20 @@ Milestone 4 remains broader browser, accessibility and regression QA. Student
 Agency and Stakeholder Trust are explicitly labelled cumulative engine gains;
 independent full gauge scales remain undefined. No verbal score bands, win/loss
 thresholds, normalised chart values or confidence percentages are invented.
-GitHub Pages deployment remains separate and has not been enabled or published.
+## GitHub Pages
+
+The built site is published on the `gh-pages` branch. To enable browser access,
+open the repository's **Settings → Pages**, set **Source** to **Deploy from a branch**,
+select **gh-pages** and **/ (root)**, then **Save**. GitHub supplies the deployment
+status and final site URL there. The expected project URL is:
+
+https://haisiangchia-spec.github.io/transformationlab/
+
+To publish future changes, run `npm ci` followed by `npm run deploy:pages` with Git
+push access. The script builds the app, publishes only generated files and
+`.nojekyll`, keeps existing Pages branch history, and never force-pushes or changes
+the source checkout. An unchanged build creates no deployment commit. There is no
+automatic deployment workflow yet.
 
 See [architecture and rule decisions](docs/ARCHITECTURE.md),
 [authoritative specification](docs/handoff/GAME_DESIGN.md), and
