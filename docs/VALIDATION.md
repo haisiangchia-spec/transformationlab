@@ -1,4 +1,4 @@
-# Validation — milestones 1 and 2
+# Validation — milestones 1–3
 
 Run `npm ci`, `npm test`, and `npm run build` from the repository root.
 The default build includes strict TypeScript checking and produces the playable
@@ -53,12 +53,45 @@ Run `npm run test:e2e` after `npx playwright install chromium`, or supply the
 The suite starts a Vite development server on port 4173. The current cloud machine
 uses `/usr/bin/chromium`. Browser binaries and runtime processes are not committed.
 
-Full reporting, classifier/confidence, chart and export checks remain deferred to
-their implementation milestones. No cross-browser Safari/Firefox validation or
-GitHub Pages deployment is claimed.
+No cross-browser Safari/Firefox validation or GitHub Pages deployment is claimed.
+Milestone-3 report/classifier/export coverage is listed below.
 
 Milestone 2 results: 161 unit/reference tests and 21 Chromium browser tests passed.
 Both website and standalone engine builds passed. A production-build smoke test
 under `/transformationlab/` verified relative assets, local fonts, investment
 confirmation, year-end scoring and the next-year event without request or runtime
 errors. This local subdirectory test is not a published GitHub Pages deployment.
+
+## Milestone 3 validation
+
+`tests/classification.test.ts` checks the seven canonical labels, actual category
+spending, engine-essential purchases, event-aligned purchases and category shifts,
+no-purchase evidence handling, starting-card exclusion, within-year purchase-order
+invariance, finite bounded indices, deterministic ties and absence of confidence.
+Controlled snapshot fixtures isolate engine-essential evidence; they are not new
+starting profiles or modifications to game rules.
+
+`tests/report.test.ts` checks completed-only reports, exact year snapshots, final
+rewarding engines, persistent gains, actual spending, annual/cumulative totals,
+full-precision deterministic export and replayable commands. A real seeded game
+with an actual Year-5 I2 shock verifies that final adoption penalties are retained.
+Raw chart domain cases include maxima above 100 and all-zero data.
+
+`tests/browser/report.spec.ts` exercises the report at the same desktop/tablet/mobile
+sizes as gameplay: chart/timeline keyboard selection, data table, evidence rubric,
+JSON download contents and filename, print invocation after dialog dismissal,
+expanded print engine/inventory content and actual PDF generation. It also verifies
+replay/menu preserve a finished journey until replacement is confirmed. Existing
+five-year gameplay tests now finish on the full report and compare the displayed
+score to engine replay.
+
+The PDF test generates a real Chromium PDF; selecting a save destination in an
+interactive browser's native print dialog remains the user's action. No server,
+PDF upload, external reporting service or calibrated playstyle confidence is used.
+
+Milestone 3 results: 192 unit/reference/report tests and 33 Chromium browser checks
+passed across desktop, tablet and mobile. Type checking, website build and engine
+library build passed. A production report was exercised under `/transformationlab/`
+with no failed requests or runtime errors; desktop/tablet screenshots and a rendered
+A4 PDF were inspected. PDF text includes the rubric version, all engine descriptions
+and final inventory. No actual Pages publication is implied by this local test.

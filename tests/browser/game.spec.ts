@@ -135,6 +135,7 @@ test("plays all five years and resumes a completed game without a fifth event", 
   await expect(
     page.getByRole("heading", { name: "Your school journey is complete." }),
   ).toBeVisible();
+  await expect(page).toHaveTitle("Final Report · School Transformation Lab");
   const saved = await page.evaluate(
     (key) => JSON.parse(localStorage.getItem(key)!),
     SAVE_KEY,

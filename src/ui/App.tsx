@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { EVENTS, type CardId, type RoundRecord } from "../engine";
 import { Start } from "./Start";
 import { Gameplay } from "./Gameplay";
-import { Brand, Footer, Icon, Modal, num } from "./shared";
+import { Icon, Modal, num } from "./shared";
+import { FinalReport } from "./FinalReport";
 import {
   SAVE_KEY,
   finishYear,
@@ -52,9 +53,11 @@ export function App() {
   useEffect(() => {
     document.title =
       screen === "game" && game
-        ? `Year ${game.round} · School Transformation Lab`
+        ? game.phase === "complete"
+          ? "Final Report · School Transformation Lab"
+          : `Year ${game.round} · School Transformation Lab`
         : "School Transformation Lab";
-  }, [screen, game?.round]);
+  }, [screen, game?.round, game?.phase]);
   function start(next: Session) {
     setSession(next);
     setSummary(null);
@@ -107,52 +110,11 @@ export function App() {
         />
       ) : (
         game && (
-          <div className="completion-screen">
-            <header className="start-header">
-              <Brand />
-              <button
-                className="button compact"
-                onClick={() => setScreen("start")}
-              >
-                RETURN TO MENU
-              </button>
-            </header>
-            <main id="main" className="completion panel">
-              <p className="eyebrow cyan">
-                FIVE YEARS OF SCHOOL TRANSFORMATION
-              </p>
-              <Icon name="network" />
-              <h1>Your school journey is complete.</h1>
-              <p>
-                You invested in {game.owned.length} enablers across five school
-                years.
-              </p>
-              <span className="eyebrow">TRANSFORMATION SCORE · UNCAPPED</span>
-              <strong className="final-score">{num(game.score)}</strong>
-              <div className="year-results">
-                {game.history.map((r) => (
-                  <div key={r.round}>
-                    <span>YEAR {r.round}</span>
-                    <strong>{num(r.annualScore)}</strong>
-                    <small>Annual score</small>
-                  </div>
-                ))}
-              </div>
-              <p className="small-note">
-                The full report, historical charts, playstyle classification and
-                export are planned for the next milestone. Your confirmed
-                journey is saved in this browser.
-              </p>
-              <button
-                className="button primary"
-                onClick={() => setScreen("start")}
-              >
-                CHOOSE YOUR NEXT SCHOOL
-                <Icon name="arrow" />
-              </button>
-            </main>
-            <Footer />
-          </div>
+          <FinalReport
+            session={session!}
+            onMenu={() => setScreen("start")}
+            onReplay={() => setScreen("start")}
+          />
         )
       )}
       {help && (

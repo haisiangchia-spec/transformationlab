@@ -1,4 +1,4 @@
-# Architecture and decisions — milestones 1 and 2
+# Architecture and decisions — milestones 1–3
 
 ## Boundaries
 
@@ -19,7 +19,7 @@
 ## React interface (milestone 2)
 
 - `src/ui/App.tsx`: start/game navigation, persisted session, help/menu dialogs,
-  year-end event reveals and a basic completion summary. Full reporting is deferred.
+  year-end event reveals and the full Final Report.
 - `Start.tsx`: four accessible profile radios, random profile selection, optional
   reproducible seed, game overview and resume/new-game replacement flow.
 - `Gameplay.tsx`: scrollable 24-card catalogue, category/search/availability filters,
@@ -89,18 +89,41 @@ permitted by the specification. Eligibility is not re-evaluated for a second
 reward pass. School Innovation pays only at the next opening evaluation; it never
 credits same-year cash or a nonexistent Year 6.
 
-## Unresolved design choices, intentionally not implemented
+## Report and classification (milestone 3)
 
-These do not block the locked engine milestone:
+The user approved an explainable deterministic heuristic with no match percentage,
+raw uncapped charts, labelled annual/cumulative scores, engine-only agency/trust
+and both print/PDF and JSON export. These are report conventions, not changes to
+locked game mechanics.
 
-- Independent Student Agency / Stakeholder Trust gauge baselines and scales.
-  State exposes only the approved cumulative engine gains and temporary event deltas.
-- Explainable classification algorithm, ties and confidence semantics. Seven labels
-  are documented in the handoff, but no classifier or invented match percentage exists.
-- Score-category verbal thresholds or absolute win/loss criteria.
-- Raw versus visually normalised S/M/A presentation; scoring remains raw and uncapped.
-- Export format (PDF, print or another format).
-- Annual versus cumulative score in round highlight chips; history retains both.
+- `src/engine/classification.ts`: pure report-only `evidence-v1` rubric. See
+  [exact measurements, weights and ties](CLASSIFICATION.md). Canonical Random is
+  player-facing Exploratory Investor. No-purchase games declare insufficient evidence.
+- `src/report/model.ts`: replay the validated session and read completed history.
+  The final snapshot preserves Year-5 penalties and pre-reward engine eligibility;
+  it does not recompute a clean final year or award gains again. Factual reflection
+  inputs use the best annual score, first rewarding engine, lowest final capability
+  and an inactive engine's requirements. Ties use earliest year, S/M/A dimension
+  order and engine catalogue order respectively. These are prompt selection rules,
+  not scoring or achievement thresholds.
+- `src/ui/FinalReport.tsx`: uncapped total, interactive five-year chart, explicit
+  annual/cumulative timeline, per-year purchase/event/resource details, final
+  capabilities and inventory, all six engine histories, transparent playstyle
+  evidence and contextual reflection questions. Play Again preserves the old report
+  until a replacement game is confirmed.
+- `CapabilityChart.tsx`: responsive SVG with raw dynamic axes, series toggles,
+  keyboard-operable year buttons, accessible SVG description and an always-present
+  full data table. No chart library or external service is required.
+- `src/report/export.ts`: versioned deterministic JSON with full-precision report,
+  rubric provenance and replayable session, plus browser Blob download. Print uses
+  the browser's native print/Save as PDF and dedicated light print CSS, expanding
+  engine/rubric/inventory details. Cancelling print does not change the game.
+
+No save migration is needed: existing milestone-2 command logs replay into the new
+report. Export does not grant arbitrary imported state access; no report-import UI
+was added. Independent agency/trust scales and verbal score-category thresholds
+remain unresolved and intentionally absent. Raw charts and clearly labelled
+annual/cumulative figures are the user's approved presentation defaults.
 
 The event/edited-plan concern is resolved at the engine boundary: events apply only
 on opening a year, before a plan can be previewed; a preview is not stored as game

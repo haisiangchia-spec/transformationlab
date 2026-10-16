@@ -9,3 +9,4 @@ export { CARDS } from '../data/cards';
 export { EVENTS } from '../data/events';
 export { ENGINES } from '../data/engines';
 export { PROFILES } from '../data/profiles';
+export * from './classification';

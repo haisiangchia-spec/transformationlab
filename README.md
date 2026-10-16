@@ -3,7 +3,7 @@
 A single-player HTML5 strategy game for Singapore school leaders, built with
 React, TypeScript and Vite.
 
-**Milestone 2:** playable Start and Gameplay screens, powered by the validated
+**Milestone 3:** playable Start, Gameplay and Final Report screens, powered by the validated
 five-year engine. Choose one of four school profiles or randomise, plan investments,
 connect adoption supporters, activate compounding Synergy Engines and respond to
 four unique events. Confirmed years are saved in your browser.
@@ -54,7 +54,8 @@ covers desktop, tablet and mobile viewports.
 4. **Confirm Investments** opens a review. Keep planning or confirm to purchase
    atomically and end the year. An empty plan can also end the year.
 5. Review the scored year and next event, then begin the next year. After Year 5,
-   see a basic completion summary with the real uncapped score and annual totals.
+   explore the Final Report with the uncapped score, raw capability chart,
+   five-year timeline, engine history, playstyle evidence and reflection prompts.
 
 Only confirmed years are saved. Reloading or returning to the start screen clears
 an unconfirmed plan. Resume returns to the saved year's opening. Starting a new
@@ -63,13 +64,33 @@ If browser storage fails, the game remains playable in the current page and show
 a notice. Saved data is a versioned command log replayed through the engine; invalid
 saves are rejected rather than treated as trusted game state.
 
+## Final Report and export
+
+Use the year buttons or timeline to inspect each year's purchases, active event,
+engine rewards, annual score and cumulative score. Chart series can be toggled;
+the accessible table always retains all three raw capability values for all five
+years. The axis scales dynamically without a 100-point ceiling. Final results
+retain Year-5 penalties and do not award engine gains again.
+
+Playstyle uses the user-approved [evidence-v1 rubric](docs/CLASSIFICATION.md): seven
+canonical styles, documented weighted indices, measured evidence and deterministic
+ties. It is an explainable heuristic, not a calibrated probability. No-purchase
+games show an explicit insufficient-evidence fallback. It never changes gameplay.
+
+**Export Report** offers **Print / Save as PDF** through the browser's print dialog
+and **Download JSON**. Print styling includes the chart, data table, full engine
+details and final inventory. JSON preserves full numerical precision, the rubric
+version/features/indices, all year snapshots and the replayable seed/action log.
+No wall-clock timestamps or personal data are required. “Play Again” returns to
+profile selection and keeps the current saved report until a new game is confirmed.
+
 ## Scope and next milestone
 
-The full Final Report, historical charts, playstyle classification and export are
-reserved for milestone 3. Independent gauge scales, classification/confidence,
-verbal score thresholds, visual chart normalisation, export format and highlight
-chip presentation still require design decisions. This interface displays raw
-uncapped capabilities and clearly labelled cumulative engine agency/trust gains.
+Milestone 4 remains broader browser, accessibility and regression QA. Student
+Agency and Stakeholder Trust are explicitly labelled cumulative engine gains;
+independent full gauge scales remain undefined. No verbal score bands, win/loss
+thresholds, normalised chart values or confidence percentages are invented.
+GitHub Pages deployment remains separate and has not been enabled or published.
 
 See [architecture and rule decisions](docs/ARCHITECTURE.md),
 [authoritative specification](docs/handoff/GAME_DESIGN.md), and
